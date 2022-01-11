@@ -1,0 +1,16 @@
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\bin\Debug\netcoreapp3.1\NumeroRandom.exe
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\bin\Debug\netcoreapp3.1\NumeroRandom.deps.json
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\bin\Debug\netcoreapp3.1\NumeroRandom.runtimeconfig.json
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\bin\Debug\netcoreapp3.1\NumeroRandom.runtimeconfig.dev.json
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\bin\Debug\netcoreapp3.1\NumeroRandom.dll
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\bin\Debug\netcoreapp3.1\NumeroRandom.pdb
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\obj\Debug\netcoreapp3.1\NumeroRandom.csproj.AssemblyReference.cache
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\obj\Debug\netcoreapp3.1\NumeroRandom.Form1.resources
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\obj\Debug\netcoreapp3.1\NumeroRandom.csproj.GenerateResource.cache
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\obj\Debug\netcoreapp3.1\NumeroRandom.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\obj\Debug\netcoreapp3.1\NumeroRandom.AssemblyInfoInputs.cache
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\obj\Debug\netcoreapp3.1\NumeroRandom.AssemblyInfo.cs
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\obj\Debug\netcoreapp3.1\NumeroRandom.csproj.CoreCompileInputs.cache
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\obj\Debug\netcoreapp3.1\NumeroRandom.dll
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\obj\Debug\netcoreapp3.1\NumeroRandom.pdb
+C:\Users\alexg\Desktop\Proyectos\CSharp\NumeroRandom\NumeroRandom\obj\Debug\netcoreapp3.1\NumeroRandom.genruntimeconfig.cache
