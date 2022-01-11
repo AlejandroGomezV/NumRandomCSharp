@@ -13,16 +13,21 @@ namespace NumeroRandom
     public partial class Form1 : Form
     {
         private List<int> listanumerosbloquedos;
+        private int meta;
+        private int actual;
+        private int diferencia;
 
         public Form1()
         {
             InitializeComponent();
             listanumerosbloquedos = new List<int>();
+            meta = 0;
+            actual = 0;
+            diferencia = 0;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             for (int i = 65; i < 80; i++)
             {
                 DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
@@ -42,6 +47,7 @@ namespace NumeroRandom
                     if (cont <= 365)
                     {
                         dataGridView1.Rows[index].Cells[j].Value = cont;
+                        meta += cont;
                         cont++;
                     }
                     else
@@ -50,6 +56,13 @@ namespace NumeroRandom
                     }
                 }
             }
+
+            leer_archivo();
+
+            txtMeta.Text = meta.ToString();
+            txtActual.Text = actual.ToString();
+            diferencia = meta - actual;
+            txtFaltante.Text = diferencia.ToString();
         }
 
         private void btnrandom_Click(object sender, EventArgs e)
@@ -86,6 +99,10 @@ namespace NumeroRandom
                                 dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Green;
                                 listanumerosbloquedos.Add(ranNum);
                                 listGenerados.Items.Add(ranNum.ToString());
+                                actual += ranNum;
+                                txtActual.Text = actual.ToString();
+                                diferencia = meta - actual;
+                                txtFaltante.Text = diferencia.ToString();
                                 break;
                             }
                         }
@@ -122,11 +139,20 @@ namespace NumeroRandom
                             dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Orange;
                             listanumerosbloquedos.Add(numerobloqueado);
                             listBloqueados.Items.Add(numerobloqueado.ToString());
+                            actual += numerobloqueado;
+                            txtActual.Text = actual.ToString();
+                            diferencia = meta - actual;
+                            txtFaltante.Text = diferencia.ToString();
                             break;
                         }
                     }
                 }
             }
+        }
+
+        private void leer_archivo()
+        {
+
         }
     }
 }
