@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -103,6 +104,7 @@ namespace NumeroRandom
                                 txtActual.Text = actual.ToString();
                                 diferencia = meta - actual;
                                 txtFaltante.Text = diferencia.ToString();
+                                guardar_archivo(2, ranNum);
                                 break;
                             }
                         }
@@ -143,6 +145,7 @@ namespace NumeroRandom
                             txtActual.Text = actual.ToString();
                             diferencia = meta - actual;
                             txtFaltante.Text = diferencia.ToString();
+                            guardar_archivo(2, numerobloqueado);
                             break;
                         }
                     }
@@ -152,7 +155,143 @@ namespace NumeroRandom
 
         private void leer_archivo()
         {
+            string path = "randomnum_db.rdn";
+            if (File.Exists(path))
+            {
+                List<string> agregados = new List<string>();
+                List<string> bloqueados = new List<string>();
+                using (StreamReader sr = File.OpenText(path))
+                {
+                    string s = "";
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        if (s.Contains("meta"))
+                        {
+                            meta = int.Parse(s.Split(":")[1]);
+                        }
+                        else if (s.Contains("actual"))
+                        {
+                            actual = int.Parse(s.Split(":")[1]);
+                        }
+                        else if (s.Contains("diferencia"))
+                        {
+                            diferencia = int.Parse(s.Split(":")[1]);
+                        }
+                        else if (s.Contains("agregados"))
+                        {
+                            agregados = s.Split(":")[1].Split(";").ToList();
+                        }
+                        else if (s.Contains("bloqueados"))
+                        {
+                            bloqueados = s.Split(":")[1].Split(";").ToList();
+                        }
+                    }
+                }
 
+                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < dataGridView1.Rows[i].Cells.Count; j++)
+                    {
+                        if (agregados.Count > 0)
+                            foreach (string num in agregados)
+                            {
+                                if (dataGridView1.Rows[i].Cells[j].Value.ToString() == num)
+                                {
+                                    dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Green;
+                                    listanumerosbloquedos.Add(int.Parse(num));
+                                    listGenerados.Items.Add(num.ToString());
+                                }
+                            }
+
+                        if (bloqueados.Count > 0)
+                            foreach (string num in bloqueados)
+                            {
+                                if (dataGridView1.Rows[i].Cells[j].Value.ToString() == num)
+                                {
+                                    dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Orange;
+                                    listanumerosbloquedos.Add(int.Parse(num));
+                                    listBloqueados.Items.Add(num.ToString());
+                                }
+                            }
+                    }
+                }
+            }
+        }
+
+        private void guardar_archivo(int tipo, int valor)
+        {
+            string path = "randomnum_db.rdn";
+            using (StreamWriter fs = File.CreateText(path))
+            {
+                fs.WriteLine("meta:" + meta);
+                fs.WriteLine("actual:" + actual);
+                fs.WriteLine("diferencia:" + diferencia);
+
+                string generados = "";
+                foreach (ListViewItem num in listGenerados.Items)
+                {
+                    generados += num.Text + ";";
+                }
+                generados.TrimEnd(';');
+                fs.WriteLine("agregados:" + generados);
+
+                string bloqueados = "";
+                foreach (ListViewItem num in listBloqueados.Items)
+                {
+                    bloqueados += num.Text + ";";
+                }
+                bloqueados.TrimEnd(';');
+                fs.WriteLine("bloqueados:" + bloqueados);
+            }
         }
     }
 }
+
+/*
+ Codigo respaldo
+
+if (!File.Exists(path))
+            {
+                using (StreamWriter fs = File.CreateText(path))
+                {
+                    fs.WriteLine("meta:" + meta);
+                    fs.WriteLine("actual:" + actual);
+                    fs.WriteLine("diferencia:" + diferencia);
+                }
+            }
+            else 
+
+
+
+            else if (File.Exists(path))
+            {
+                using(StreamReader sr = File.OpenText(path))
+                {
+                    string s = "";
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        if (s.Contains("meta"))
+                        {
+                            meta = int.Parse(s.Split(":")[1]);
+                        }
+                        else if (s.Contains("actual"))
+                        {
+                            actual = int.Parse(s.Split(":")[1]);
+                        }
+                        else if (s.Contains("diferencia"))
+                        {
+                            diferencia = int.Parse(s.Split(":")[1]);
+                        }
+                        else if (s.Contains("agregados"))
+                        {
+                            agregados = s.Split(":")[1].Split(";").ToList();
+                        }
+                        else if (s.Contains("bloqueados"))
+                        {
+                            bloqueados = s.Split(":")[1].Split(";").ToList();
+                        }
+                    }
+                }
+            }
+
+ */
